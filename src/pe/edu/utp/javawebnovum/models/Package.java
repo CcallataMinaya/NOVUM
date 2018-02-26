@@ -1,7 +1,7 @@
 package pe.edu.utp.javawebnovum.models;
 
 public class Package {
-    //
+
     private int id;
     private String name;
     private String description;

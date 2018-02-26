@@ -16,9 +16,9 @@ public class PackagesEntity extends BaseEntity{
                             .executeQuery(sql);
                     while (resultSet.next()) {
                         Package opackage = new Package()
-                                .setId(resultSet.getInt(1))
-                                .setName(resultSet.getString(2))
-                                .setDescription((resultSet.getString(3)));
+                                .setId(resultSet.getInt("id"))
+                                .setName(resultSet.getString("name"))
+                                .setDescription((resultSet.getString("description")));
                         packages.add(opackage);
                     }
                     return packages;
