@@ -54,10 +54,10 @@ public class HrService {
                 getUsersEntity().findByName(name) : null;
     }
 
-    /*public User createUser(String name) {
+    public User createUser(String password, String name, String last_name, String address, String dni, String rol, String email ) {
         return getUsersEntity() != null ?
-                getUsersEntity().create(name) : null;
-    }*/
+                getUsersEntity().create(password,name,last_name,address,dni,rol,email) : null;
+    }
 
     public boolean deleteUser(int id) {
         return getUsersEntity() != null ?

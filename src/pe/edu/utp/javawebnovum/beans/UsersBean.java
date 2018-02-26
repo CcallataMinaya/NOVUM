@@ -1,7 +1,6 @@
 package pe.edu.utp.javawebnovum.beans;
 
 import pe.edu.utp.javawebnovum.models.HrService;
-import pe.edu.utp.javawebnovum.models.Order;
 import pe.edu.utp.javawebnovum.models.User;
 
 import javax.enterprise.context.SessionScoped;
@@ -19,10 +18,8 @@ public class UsersBean implements Serializable {
         service = new HrService();
     }
 
-    /*public List<User> getUsers(){
-        return service.findAllUsers();
-    }
-*/
+    public List<User> getUsers(){ return service.findAllUsers();    }
+
     public User getUser() {
         return user;
     }
@@ -39,15 +36,51 @@ public class UsersBean implements Serializable {
         this.getUser().setPassword(password);
     }
 
+    public String getName() { return this.getUser().getName(); }
+
+    public void setName(String name){
+        this.getUser().setName(name);
+    }
+
+    public String getLast_Name() { return this.getUser().getLast_name(); }
+
+    public void setLast_Name(String last_name){
+        this.getUser().setLast_name(last_name);
+    }
+
+    public String getAddress() { return this.getUser().getAddress(); }
+
+    public void setAddress(String address){
+        this.getUser().setAddress(address);
+    }
+
+    public String getDni() { return this.getUser().getDni(); }
+
+    public void setDni(String dni){
+        this.getUser().setDni(dni);
+    }
+
+    public String getRol() { return this.getUser().getRol(); }
+
+    public void setRol(String rol){
+        this.getUser().setRol(rol);
+    }
+
+    public String getEmail() { return this.getUser().getEmail(); }
+
+    public void setEmail(String email){
+        this.getUser().setEmail(email);
+    }
+
     public String newUser(){
         this.setUser(new User());
         return "success";
     }
 
-    /*public String createUser(){
-        service.createUser(this.getPassword());
+    public String createUser(){
+        service.createUser(this.getPassword(),this.getName(),this.getLast_Name(),getAddress(), getDni(), getRol(),getEmail());
         return "success";
-    }*/
+    }
 
     public String editUser(User region){
         this.setUser(user);
