@@ -33,35 +33,40 @@ public class HrService {
         if(getConnection() != null) {
             if(usersEntity == null) {
                 usersEntity = new UsersEntity();
-                //usersEntity.setConnection(getConnection());
+                usersEntity.setConnection(getConnection());
             }
         }
         return usersEntity;
     }
 
-    protected OrdersEntity getOrdersEntity() {
-        if(getConnection() != null) {
-            if(ordersEntity == null) {
-                ordersEntity = new OrdersEntity();
-                ordersEntity.setConnection(getConnection());
-            }
-        }
-        return ordersEntity;
+    public List<User> findAllUsers() {
+        return getUsersEntity() != null ?
+                getUsersEntity().findAll() : null;
     }
 
-   /* public List<User> findAllRegions() {
-        return getOrdersEntity() != null ?
-                getOrdersEntity().findAll() : null;
-    }*/
-
-    public User findOrderById(int id) {
+    public User findUserById(int id) {
         return getUsersEntity() != null ?
                 getUsersEntity().findById(id) : null;
     }
 
-    /*public User createUser(String password) {
+    public User findUserByName(String name) {
         return getUsersEntity() != null ?
-                getUsersEntity().create(password) : null;
+                getUsersEntity().findByName(name) : null;
+    }
+
+    /*public User createUser(String name) {
+        return getUsersEntity() != null ?
+                getUsersEntity().create(name) : null;
     }*/
+
+    public boolean deleteUser(int id) {
+        return getUsersEntity() != null ?
+                getUsersEntity().delete(id) : false;
+    }
+
+    public boolean updateUser(User user) {
+        return getUsersEntity() != null ?
+                getUsersEntity().update(user) : false;
+    }
 
 }

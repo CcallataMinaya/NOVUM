@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersEntity extends BaseEntity{
-    private static String DEFAULT_SQL = "SELECT * FROM hr.regions";
+    private static String DEFAULT_SQL = "SELECT * FROM users";
     private List<User> findByCriteria(String sql) {
         List<User> users;
         if(getConnection() != null) {
@@ -77,7 +77,7 @@ public class UsersEntity extends BaseEntity{
                         .createStatement()
                         .executeQuery(sql);
                 return resultSet.next() ?
-                        resultSet.getInt("id") : 0;
+                        resultSet.getInt("max_id") : 0;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -91,11 +91,11 @@ public class UsersEntity extends BaseEntity{
             if(getConnection() != null) {
                 String sql = "INSERT INTO users(id, password, name, last_name, address, dni, rol, email) VALUES(" +
                         String.valueOf(getMaxId() + 1) + ", '" +
-                        name + "')";
+                        password + name + last_name+ address+ dni+ rol+ email +"')";
                 int results = updateByCriteria(sql);
                 if(results > 0) {
-                    //User user = new User(getMaxId(), password);
-                    //return user;
+                    User user = new User(getMaxId(), password, name, last_name, address, dni, rol, email);
+                    return user;
                 }
             }
         }
@@ -105,8 +105,9 @@ public class UsersEntity extends BaseEntity{
     public boolean update(User user) {
         if(findByName(user.getName()) != null) return false;
         return updateByCriteria(
-                "UPDATE users SET name = '" +
-                        user.getName() + "'" +
+                "UPDATE users SET password = '" +
+                        user.getPassword() +"',name ='" + user.getName() + "',last_name ='" + user.getLast_name() + "',address ='" +
+                        user.getAddress() + "'dni ='" + user.getDni() + "',rol ='" + user.getRol() + "',email ='" + user.getEmail()+ "'" +
                         " WHERE id = " +
                         String.valueOf(user.getId())) > 0;
     }
