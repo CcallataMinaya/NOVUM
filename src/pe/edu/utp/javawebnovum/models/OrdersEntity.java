@@ -17,15 +17,20 @@ public class OrdersEntity extends BaseEntity{
                         .createStatement()
                         .executeQuery(sql);
                 while(resultSet.next()) {
-                    Order country = new Order(
+                    Order order = new Order(
                             resultSet.getInt("id"),
                             resultSet.getInt("user_id"),
-                            resultSet.getInt("user_id"),
+                            resultSet.getInt("thematic_id"),
+                            resultSet.getInt("package_id"),
+                            resultSet.getDate("date_order"),
+                            resultSet.getDate("start_time"),
+                            resultSet.getString("location"),
+                            resultSet.getFloat("total_price"),
                             usersEntity
                                     .findById(resultSet
                                             .getInt("id"))
                     );
-                    orders.add(country);
+                    orders.add(order);
                 }
                 return orders;
             } catch (SQLException e) {

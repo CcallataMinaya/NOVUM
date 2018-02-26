@@ -16,7 +16,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, int user_id, int thematic_id, User user) {
+    public Order(int id, int user_id, int thematic_id,int package_id,Date date_order,Date start_time,String location,float total_price, User user) {
         this.id = id;
         this.user_id = user_id;
         this.thematic_id = thematic_id;
