@@ -89,7 +89,7 @@ public class UsersEntity extends BaseEntity{
     public User create(String password, String name, String last_name, String address, String dni, String rol, String email ) {
         if(findByName(name) == null) {
             if(getConnection() != null) {
-                String sql = "INSERT INTO users(id, password, name, last_name, address, dni, rol, email) VALUES(" +
+                String sql = "INSERT INTO users(password, name, last_name, address, dni, rol, email) VALUES(" +
                         String.valueOf(getMaxId() + 1) + ", '" +
                         password + name + last_name+ address+ dni+ rol+ email +"')";
                 int results = updateByCriteria(sql);
