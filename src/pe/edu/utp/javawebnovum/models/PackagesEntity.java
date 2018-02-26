@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 public class PackagesEntity extends BaseEntity{
-        ///
+        ////
         private static String DEFAULT_SQL = "SELECT * FROM package";
         private List<Package> findByCriteria(String sql) {
             List<Package> packages;
