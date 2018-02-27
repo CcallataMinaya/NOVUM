@@ -11,6 +11,7 @@ public class HrService {
     private Connection connection;
     private OrdersEntity ordersEntity;
     private UsersEntity usersEntity;
+    private ThematicsEntity thematicsEntity;
 
     private Connection getConnection() {
         if (connection == null){
@@ -39,9 +40,24 @@ public class HrService {
         return usersEntity;
     }
 
+    protected ThematicsEntity getThematicsEntity() {
+        if(getConnection() != null) {
+            if(thematicsEntity == null) {
+                thematicsEntity = new ThematicsEntity();
+                thematicsEntity.setConnection(getConnection());
+            }
+        }
+        return thematicsEntity;
+    }
+
     public List<User> findAllUsers() {
         return getUsersEntity() != null ?
                 getUsersEntity().findAll() : null;
+    }
+
+    public List<Thematic> findAllThematics() {
+        return getUsersEntity() != null ?
+                getThematicsEntity().findAll() : null;
     }
 
     public User findUserById(int id) {
@@ -49,9 +65,19 @@ public class HrService {
                 getUsersEntity().findById(id) : null;
     }
 
+    public Thematic findThematicById(int id) {
+        return getThematicsEntity() != null ?
+                getThematicsEntity().findById(id) : null;
+    }
+
     public User findUserByName(String name) {
         return getUsersEntity() != null ?
                 getUsersEntity().findByName(name) : null;
+    }
+
+    public Thematic findThematicByName(String name) {
+        return getThematicsEntity() != null ?
+                getThematicsEntity().findByName(name) : null;
     }
 
     public User createUser(String password, String name, String last_name, String address, String dni, String rol, String email ) {
@@ -59,14 +85,29 @@ public class HrService {
                 getUsersEntity().create(password,name,last_name,address,dni,rol,email) : null;
     }
 
+    public Thematic createThematic(String name, String photo, String description ) {
+        return getThematicsEntity() != null ?
+                getThematicsEntity().create(name,photo,description) : null;
+    }
+
     public boolean deleteUser(int id) {
         return getUsersEntity() != null ?
                 getUsersEntity().delete(id) : false;
     }
 
+    public boolean deleteThematic(int id) {
+        return getThematicsEntity() != null ?
+                getThematicsEntity().delete(id) : false;
+    }
+
     public boolean updateUser(User user) {
         return getUsersEntity() != null ?
                 getUsersEntity().update(user) : false;
+    }
+
+    public boolean updateThematic(Thematic thematic) {
+        return getThematicsEntity() != null ?
+                getThematicsEntity().update(thematic) : false;
     }
 
 }
