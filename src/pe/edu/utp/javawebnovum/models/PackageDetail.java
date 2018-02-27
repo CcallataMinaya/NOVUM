@@ -8,6 +8,17 @@ public class PackageDetail {
     private float total_price;
     private String description;
 
+    public PackageDetail() {
+    }
+
+    public PackageDetail(int id, int package_id, int thematic_id, int user_id, float total_price, String description) {
+        this.id = id;
+        this.thematic_id = thematic_id;
+        this.user_id = user_id;
+        this.total_price = total_price;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }
