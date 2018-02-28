@@ -17,15 +17,10 @@ public class PackageDetailEntity extends BaseEntity {
                         .executeQuery(sql);
                 while(resultSet.next()) {
                     PackageDetail packageDetail = new PackageDetail(
-                            packagesEntity
-                                    .findById(resultSet
-                                            .getInt("package_id")),
-                            thematicsEntity
-                                    .findById(resultSet
-                                            .getInt("thematic_id")),
-                            usersEntity
-                                    .findById(resultSet
-                                            .getInt("user_id")),
+                            packagesEntity.findById(resultSet.getInt("package_id")),
+                            thematicsEntity.findById(resultSet.getInt("thematic_id")),
+                            usersEntity.findById(resultSet.getInt("owner_id")),
+                            usersEntity.findById(resultSet.getInt("client_id")),
                             resultSet.getFloat("total_price"),
                             resultSet.getString("description")
                     );

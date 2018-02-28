@@ -4,7 +4,8 @@ import java.util.Date;
 
 public class Order {
     private int id;
-    private User user;
+    private User owner_id;
+    private User client_id;
     private Thematic thematic;
     private Package aPackage;
     private Date date_order;
@@ -15,9 +16,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, User user, Thematic thematic, Package aPackage, Date date_order, Date start_time, String location, float total_price) {
+    public Order(int id, User owner_id, User client_id, Thematic thematic, Package aPackage, Date date_order, Date start_time, String location, float total_price) {
         this.id = id;
-        this.user = user;
+        this.owner_id = owner_id;
+        this.client_id = client_id;
         this.thematic = thematic;
         this.aPackage = aPackage;
         this.date_order = date_order;
@@ -25,7 +27,6 @@ public class Order {
         this.location = location;
         this.total_price = total_price;
     }
-
 
     public int getId() {
         return id;
@@ -36,12 +37,21 @@ public class Order {
         return this;
     }
 
-    public User getUser() {
-        return user;
+    public User getOwner_id() {
+        return owner_id;
     }
 
-    public Order setUser(User user) {
-        this.user = user;
+    public Order setOwner_id(User owner_id) {
+        this.owner_id = owner_id;
+        return this;
+    }
+
+    public User getClient_id() {
+        return client_id;
+    }
+
+    public Order setClient_id(User client_id) {
+        this.client_id = client_id;
         return this;
     }
 
@@ -98,4 +108,6 @@ public class Order {
         this.total_price = total_price;
         return this;
     }
+
+
 }
