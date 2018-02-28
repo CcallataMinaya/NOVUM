@@ -36,7 +36,7 @@ public class PackageDetailsBean implements Serializable {
     }
 
     public int getThematic() {
-        return this.getPackagDetail().getThematic().getId()
+        return this.getPackagDetail().getThematic().getId();
     }
 
     public void setThematic(Thematic thematic){
@@ -72,11 +72,11 @@ public class PackageDetailsBean implements Serializable {
         return "success";
     }
 
-    /*public String createPackageDetail(){
+   /* public String createPackageDetail(){
         service.createPackageDetail(this.getaPackage(), this.getThematic(),this.getUser(),this.getTotal_price(), this.getDescription());
         return "success";
-    }*/
-
+    }
+*/
     public String editPackageDetail(PackageDetail packageDetail){
         this.setPackagDetail(packageDetail);
         return "success";

@@ -9,11 +9,11 @@ import java.util.List;
 
 public class HrService {
     private Connection connection;
-    private OrdersEntity ordersEntity;
     private UsersEntity usersEntity;
     private ThematicsEntity thematicsEntity;
     private PackagesEntity packagesEntity;
     private PackageDetailEntity packageDetailEntity;
+    private OrdersEntity ordersEntity;
 
     private Connection getConnection() {
         if (connection == null){
@@ -72,6 +72,16 @@ public class HrService {
         return packageDetailEntity;
     }
 
+    protected OrdersEntity getOrdersEntity() {
+        if(getConnection() != null) {
+            if(ordersEntity == null) {
+                ordersEntity = new OrdersEntity();
+                ordersEntity.setConnection(getConnection());
+            }
+        }
+        return ordersEntity;
+    }
+
     public List<User> findAllUsers() {
         return getUsersEntity() != null ?
                 getUsersEntity().findAll() : null;
@@ -91,6 +101,13 @@ public class HrService {
         return getPackageDetailsEntity() != null ?
                 getPackageDetailsEntity().findAll(packagesEntity, thematicsEntity, usersEntity) : null;
     }
+
+    public List<Order> findAllOrders() {
+        /*return getOrdersEntity() != null ?
+                getOrdersEntity().findAll() : null;*/
+        return null;
+    }
+
 
     public User findUserById(int id) {
         return getUsersEntity() != null ?
