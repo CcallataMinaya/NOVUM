@@ -1,6 +1,7 @@
 package pe.edu.utp.javawebnovum.models;
 
 import com.oracle.wls.shaded.org.apache.xpath.operations.Or;
+import pe.edu.utp.javawebnovum.beans.ThematicsBean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class OrdersEntity extends BaseEntity{
     private static String DEFAULT_SQL = "SELECT * FROM orders";
-    private List<Order> findByCriteria(String sql, UsersEntity usersEntity) {
+    private List<Order> findByCriteria(String sql, UsersEntity usersEntity, ThematicsEntity thematicsEntity, PackagesEntity packagesEntity) {
         List<Order> orders = new ArrayList<>();
         if(getConnection() != null) {
             try {
@@ -19,16 +20,19 @@ public class OrdersEntity extends BaseEntity{
                 while(resultSet.next()) {
                     Order order = new Order(
                             resultSet.getInt("id"),
-                            resultSet.getInt("user_id"),
-                            resultSet.getInt("thematic_id"),
-                            resultSet.getInt("package_id"),
+                            usersEntity
+                                    .findById(resultSet
+                                            .getInt("user_id")),
+                            thematicsEntity
+                                    .findById(resultSet
+                                            .getInt("thematic_id")),
+                            packagesEntity
+                                    .findById(resultSet
+                                            .getInt("package_id")),
                             resultSet.getDate("date_order"),
                             resultSet.getDate("start_time"),
                             resultSet.getString("location"),
-                            resultSet.getFloat("total_price"),
-                            usersEntity
-                                    .findById(resultSet
-                                            .getInt("id"))
+                            resultSet.getFloat("total_price")
                     );
                     orders.add(order);
                 }
@@ -41,7 +45,7 @@ public class OrdersEntity extends BaseEntity{
 
     }
 
-    public List<Order> findAll(UsersEntity usersEntity) {
-        return findByCriteria(DEFAULT_SQL, usersEntity);
+    public List<Order> findAll(UsersEntity usersEntity, ThematicsEntity thematicsEntity, PackagesEntity packagesEntity) {
+        return findByCriteria(DEFAULT_SQL, usersEntity, thematicsEntity, packagesEntity);
     }
 }

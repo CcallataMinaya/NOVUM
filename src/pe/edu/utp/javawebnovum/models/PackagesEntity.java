@@ -84,10 +84,10 @@ public class PackagesEntity extends BaseEntity{
             if(findByName(name) == null) {
                 if(getConnection() != null) {
                     String sql = "INSERT INTO package(name,description) VALUES(" +
-                            name + description +"')";
+                            String.valueOf(getMaxId() + 1) +name + description +"')";
                     int results = updateByCriteria(sql);
                     if(results > 0) {
-                        Package opackage = new Package( name, description);
+                        Package opackage = new Package(getMaxId() ,name, description);
                         return opackage;
                     }
                 }

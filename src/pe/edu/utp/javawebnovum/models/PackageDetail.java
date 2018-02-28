@@ -1,33 +1,18 @@
 package pe.edu.utp.javawebnovum.models;
 
 public class PackageDetail {
-    private int id;
     private Package aPackage;
     private Thematic thematic;
     private User user;
     private float total_price;
     private String description;
 
-    public PackageDetail() {
-    }
-
-    public PackageDetail(int id, Package aPackage, Thematic thematic, User user, float total_price, String description) {
-        this.id = id;
+    public PackageDetail(Package aPackage, Thematic thematic, User user, float total_price, String description) {
         this.aPackage = aPackage;
         this.thematic = thematic;
         this.user = user;
         this.total_price = total_price;
         this.description = description;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public PackageDetail setId(int id) {
-        this.id = id;
-        return this;
     }
 
     public Package getaPackage() {
