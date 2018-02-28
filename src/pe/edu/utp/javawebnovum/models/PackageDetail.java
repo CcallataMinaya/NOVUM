@@ -3,14 +3,16 @@ package pe.edu.utp.javawebnovum.models;
 public class PackageDetail {
     private Package aPackage;
     private Thematic thematic;
-    private User user;
+    private User owner;
+    private User client;
     private float total_price;
     private String description;
 
-    public PackageDetail(Package aPackage, Thematic thematic, User user, float total_price, String description) {
+    public PackageDetail(Package aPackage, Thematic thematic, User owner, User client, float total_price, String description) {
         this.aPackage = aPackage;
         this.thematic = thematic;
-        this.user = user;
+        this.setOwner(owner);
+        this.setClient(client);
         this.total_price = total_price;
         this.description = description;
     }
@@ -20,6 +22,7 @@ public class PackageDetail {
     }
 
     public Package getaPackage() {
+
         return aPackage;
     }
 
@@ -36,13 +39,21 @@ public class PackageDetail {
         this.thematic = thematic;
         return this;
     }
-
-    public User getUser() {
-        return user;
+    public User getOwner() {
+        return owner;
     }
 
-    public PackageDetail setUser(User user) {
-        this.user = user;
+    public PackageDetail setOwner(User owner) {
+        this.owner = owner;
+        return this;
+    }
+
+    public User getClient() {
+        return client;
+    }
+
+    public PackageDetail setClient(User client) {
+        this.client = client;
         return this;
     }
 
@@ -63,4 +74,6 @@ public class PackageDetail {
         this.description = description;
         return this;
     }
+
+
 }

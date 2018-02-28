@@ -20,15 +20,10 @@ public class OrdersEntity extends BaseEntity{
                 while(resultSet.next()) {
                     Order order = new Order(
                             resultSet.getInt("id"),
-                            usersEntity
-                                    .findById(resultSet
-                                            .getInt("user_id")),
-                            thematicsEntity
-                                    .findById(resultSet
-                                            .getInt("thematic_id")),
-                            packagesEntity
-                                    .findById(resultSet
-                                            .getInt("package_id")),
+                            usersEntity.findById(resultSet.getInt("user_id")),
+                            usersEntity.findById(resultSet.getInt("user_id")),
+                            thematicsEntity.findById(resultSet.getInt("thematic_id")),
+                            packagesEntity.findById(resultSet.getInt("package_id")),
                             resultSet.getDate("date_order"),
                             resultSet.getDate("start_time"),
                             resultSet.getString("location"),
