@@ -1,7 +1,6 @@
 package pe.edu.utp.javawebnovum.models;
 
 public class Package {
-
     private int id;
     private String name;
     private String description;
@@ -9,8 +8,8 @@ public class Package {
     public Package() {
     }
 
-    public Package( String name, String description) {
-
+    public Package(int id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
     }
