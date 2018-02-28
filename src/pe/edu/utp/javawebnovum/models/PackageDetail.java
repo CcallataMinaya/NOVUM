@@ -12,12 +12,12 @@ public class PackageDetail {
     }
 
     public PackageDetail(int id, Package aPackage, Thematic thematic, User user, float total_price, String description) {
-        this.setId(id);
-        this.setaPackage(aPackage);
-        this.setThematic(thematic);
-        this.setUser(user);
-        this.setTotal_price(total_price);
-        this.setDescription(description);
+        this.id = id;
+        this.aPackage = aPackage;
+        this.thematic = thematic;
+        this.user = user;
+        this.total_price = total_price;
+        this.description = description;
     }
 
 
