@@ -2,7 +2,6 @@ package pe.edu.utp.javawebnovum.beans;
 
 import pe.edu.utp.javawebnovum.models.HrService;
 import pe.edu.utp.javawebnovum.models.PackageDetail;
-import pe.edu.utp.javawebnovum.models.User;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -14,7 +13,7 @@ import java.util.List;
 public class PackageDetailsBean implements Serializable {
     private HrService service;
     private PackageDetail packagedetail;
-}
+
 
     public PackageDetailsBean(){
         service = new HrService();
@@ -22,22 +21,54 @@ public class PackageDetailsBean implements Serializable {
 
     public List<PackageDetail> getPackageDetail(){ return service.findAllUsers();    }
 
-    public PackageDetail getUser() {
+    public PackageDetail getPackagDetail() {
         return packagedetail;
     }
 
-    public void setUser(PackageDetail packagedetail) {
+    public void getPackagDetail(PackageDetail packagedetail) {
         this.packagedetail = packagedetail;
     }
 
-    public String getPassword() {
-        return this.getUser().getPassword();
+    public int getPackage_id() {
+        return this.getPackagDetail().getPackage_id();
     }
 
-    public void setPassword(String password){
-        this.getUser().setPassword(password);
+    public void setPackage_id(int package_id){
+        this.getPackagDetail().setPackage_id(package_id);
     }
 
+    public int getThematic_id() {
+        return this.getPackagDetail().getThematic_id();
+    }
+
+    public void setThematic_id(int thematic_id){
+        this.getPackagDetail().setThematic_id(thematic_id);
+    }
+
+    public int getUser_id() {
+        return this.getPackagDetail().getUser_id();
+    }
+
+    public void setUser_id(int user_id){
+        this.getPackagDetail().setUser_id(user_id);
+    }
+
+    public float getTotal_price () {
+        return this.getPackagDetail().getTotal_price();
+    }
+
+    public void setTotal_price(float total_price){
+        this.getPackagDetail().setTotal_price(total_price);
+    }
+
+    public String getDescription () {
+        return this.getPackagDetail().getDescription();
+    }
+
+    public void setDescription(String description){
+        this.getPackagDetail().setDescription(description);
+    }
+    
     public String getName() { return this.getUser().getName(); }
 
     public void setName(String name){
