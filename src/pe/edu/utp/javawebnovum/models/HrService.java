@@ -13,6 +13,7 @@ public class HrService {
     private UsersEntity usersEntity;
     private ThematicsEntity thematicsEntity;
     private PackagesEntity packagesEntity;
+    private PackageDetailEntity packageDetailEntity;
 
     private Connection getConnection() {
         if (connection == null){
@@ -61,6 +62,16 @@ public class HrService {
         return packagesEntity;
     }
 
+    protected PackageDetailEntity getPackageDetailsEntity() {
+        if(getConnection() != null) {
+            if(packageDetailEntity == null) {
+                packageDetailEntity = new PackageDetailEntity();
+                packageDetailEntity.setConnection(getConnection());
+            }
+        }
+        return packageDetailEntity;
+    }
+
     public List<User> findAllUsers() {
         return getUsersEntity() != null ?
                 getUsersEntity().findAll() : null;
@@ -74,6 +85,11 @@ public class HrService {
     public List<Package> findAllPackages() {
         return getPackagesEntity() != null ?
                 getPackagesEntity().findAll() : null;
+    }
+
+    public List<PackageDetail> findAllPackageDetails() {
+        return getPackageDetailsEntity() != null ?
+                getPackageDetailsEntity().findAll(packagesEntity, thematicsEntity, usersEntity) : null;
     }
 
     public User findUserById(int id) {
@@ -106,6 +122,11 @@ public class HrService {
                 getThematicsEntity().create(name,photo,description) : null;
     }
 
+    /*public PackageDetail createPackageDetail(Package aPackage, Thematic thematic, User user, float total_price, String description) {
+        return getPackageDetailsEntity() != null ?
+                getPackageDetailsEntity().create(aPackage.getId(), thematic.getId(), user.getId(), total_price, description) : null;
+    }
+*/
     public boolean deleteUser(int id) {
         return getUsersEntity() != null ?
                 getUsersEntity().delete(id) : false;
@@ -116,7 +137,7 @@ public class HrService {
                 getThematicsEntity().delete(id) : false;
     }
 
-    public boolean updateUser(User user) {
+    public boolean updateUser(Package user) {
         return getUsersEntity() != null ?
                 getUsersEntity().update(user) : false;
     }
@@ -126,4 +147,8 @@ public class HrService {
                 getThematicsEntity().update(thematic) : false;
     }
 
+    /*public boolean updatePackageDetail(PackageDetail packageDetail) {
+        return getPackageDetailsEntity() != null ?
+                getPackageDetailsEntity().update(packageDetail) : false;
+    }*/
 }

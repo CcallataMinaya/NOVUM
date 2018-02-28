@@ -88,7 +88,7 @@ public class UsersBean implements Serializable {
     }
 
     public String updateUser(){
-        //service.updateUser(this.getUser());
+        service.updateUser(this.getUser());
         return "success";
     }
     public String deleteUser(User user){

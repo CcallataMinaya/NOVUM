@@ -72,20 +72,20 @@ public class PackageDetailsBean implements Serializable {
         return "success";
     }
 
-    public String createPackageDetail(){
-        service.createPackageDetail(this.getPassword(),this.getName(),this.getLast_Name(),getAddress(), getDni(), getRol(),getEmail());
+    /*public String createPackageDetail(){
+        service.createPackageDetail(this.getaPackage(), this.getThematic(),this.getUser(),this.getTotal_price(), this.getDescription());
         return "success";
-    }
+    }*/
 
     public String editPackageDetail(PackageDetail packageDetail){
         this.setPackagDetail(packageDetail);
         return "success";
     }
 
-    public String updatePackageDetail(){
+    /*public String updatePackageDetail(){
         service.updatePackageDetail(this.getPackagDetail());
         return "success";
-    }
+    }*/
     public String deletePackageDetail(PackageDetail packageDetail){
         service.deleteUser(packageDetail.getaPackage().getId());
         return "success";

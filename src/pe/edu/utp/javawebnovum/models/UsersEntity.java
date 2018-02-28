@@ -102,7 +102,7 @@ public class UsersEntity extends BaseEntity{
         return null;
     }
 
-    public boolean update(User user) {
+    public boolean update(Package user) {
         if(findByName(user.getName()) != null) return false;
         return updateByCriteria(
                 "UPDATE users SET password = '" +

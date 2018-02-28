@@ -59,11 +59,11 @@ public class PackagesBeans implements Serializable{
     }
 
     public String updatePackage(){
-        //service.updateUser(this.getUser());
+        service.updateUser(this.getPackage());
         return "success";
     }
     public String deletePackage(Package apackage){
-        //service.deleteUser(user.getId());
+        service.deleteUser(apackage.getId());
         return "success";
     }
 }
