@@ -14,7 +14,7 @@ public class PackagesBeans implements Serializable{
     private HrService service;
     private Package apackage;
 
-    public UsersBean(){
+    public PackagesBeans(){
         service = new HrService();
     }
 
@@ -62,7 +62,7 @@ public class PackagesBeans implements Serializable{
         //service.updateUser(this.getUser());
         return "success";
     }
-    public String deletePackage(Package user){
+    public String deletePackage(Package apackage){
         //service.deleteUser(user.getId());
         return "success";
     }
