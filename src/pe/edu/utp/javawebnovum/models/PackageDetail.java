@@ -2,56 +2,59 @@ package pe.edu.utp.javawebnovum.models;
 
 public class PackageDetail {
     private int id;
-    private int package_id;
-    private int thematic_id;
-    private int user_id;
+    private Package aPackage;
+    private Thematic thematic;
+    private User user;
     private float total_price;
     private String description;
 
     public PackageDetail() {
     }
 
-    public PackageDetail(int id, int package_id, int thematic_id, int user_id, float total_price, String description) {
-        this.id = id;
-        this.thematic_id = thematic_id;
-        this.user_id = user_id;
-        this.total_price = total_price;
-        this.description = description;
+    public PackageDetail(int id, Package aPackage, Thematic thematic, User user, float total_price, String description) {
+        this.setId(id);
+        this.setaPackage(aPackage);
+        this.setThematic(thematic);
+        this.setUser(user);
+        this.setTotal_price(total_price);
+        this.setDescription(description);
     }
+
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public PackageDetail setId(int id) {
         this.id = id;
+        return this;
     }
 
-    public int getPackage_id() {
-        return package_id;
+    public Package getaPackage() {
+        return aPackage;
     }
 
-    public PackageDetail setPackage_id(int package_id) {
-        this.package_id = package_id;
-        return  this;
+    public PackageDetail setaPackage(Package aPackage) {
+        this.aPackage = aPackage;
+        return this;
     }
 
-    public int getThematic_id() {
-        return thematic_id;
+    public Thematic getThematic() {
+        return thematic;
     }
 
-    public PackageDetail setThematic_id(int thematic_id) {
-        this.thematic_id = thematic_id;
-        return  this;
+    public PackageDetail setThematic(Thematic thematic) {
+        this.thematic = thematic;
+        return this;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public PackageDetail setUser_id(int user_id) {
-        this.user_id = user_id;
-        return  this;
+    public PackageDetail setUser(User user) {
+        this.user = user;
+        return this;
     }
 
     public float getTotal_price() {
@@ -60,7 +63,7 @@ public class PackageDetail {
 
     public PackageDetail setTotal_price(float total_price) {
         this.total_price = total_price;
-        return  this;
+        return this;
     }
 
     public String getDescription() {
@@ -69,6 +72,6 @@ public class PackageDetail {
 
     public PackageDetail setDescription(String description) {
         this.description = description;
-        return  this;
+        return this;
     }
 }
