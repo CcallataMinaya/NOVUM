@@ -12,6 +12,7 @@ public class HrService {
     private OrdersEntity ordersEntity;
     private UsersEntity usersEntity;
     private ThematicsEntity thematicsEntity;
+    private PackagesEntity packagesEntity;
 
     private Connection getConnection() {
         if (connection == null){
@@ -50,14 +51,29 @@ public class HrService {
         return thematicsEntity;
     }
 
+    protected PackagesEntity getPackagesEntity() {
+        if(getConnection() != null) {
+            if(packagesEntity == null) {
+                packagesEntity = new PackagesEntity();
+                packagesEntity.setConnection(getConnection());
+            }
+        }
+        return packagesEntity;
+    }
+
     public List<User> findAllUsers() {
         return getUsersEntity() != null ?
                 getUsersEntity().findAll() : null;
     }
 
     public List<Thematic> findAllThematics() {
-        return getUsersEntity() != null ?
+        return getThematicsEntity() != null ?
                 getThematicsEntity().findAll() : null;
+    }
+
+    public List<Package> findAllPackages() {
+        return getPackagesEntity() != null ?
+                getPackagesEntity().findAll() : null;
     }
 
     public User findUserById(int id) {

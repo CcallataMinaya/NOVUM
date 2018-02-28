@@ -18,7 +18,7 @@ public class PackagesBeans implements Serializable{
         service = new HrService();
     }
 
-    public List<Package> getUsers(){ return service.findAllUsers();    }
+    public List<Package> getUsers(){ return service.findAllPackages();    }
 
     public Package getPackage() {
         return apackage;
