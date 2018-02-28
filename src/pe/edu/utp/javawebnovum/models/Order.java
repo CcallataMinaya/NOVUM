@@ -4,28 +4,26 @@ import java.util.Date;
 
 public class Order {
     private int id;
-    private int user_id;
-    private int thematic_id;
-    private int package_id;
+    private User user;
+    private Thematic thematic;
+    private Package aPackage;
     private Date date_order;
     private Date start_time;
     private String location;
     private float total_price;
-    private User user;
 
     public Order() {
     }
 
-    public Order(int id, int user_id, int thematic_id,int package_id,Date date_order,Date start_time,String location,float total_price, User user) {
+    public Order(int id, User user, Thematic thematic, Package aPackage, Date date_order, Date start_time, String location, float total_price) {
         this.id = id;
-        this.user_id = user_id;
-        this.thematic_id = thematic_id;
-        this.package_id = package_id;
+        this.user = user;
+        this.thematic = thematic;
+        this.aPackage = aPackage;
         this.date_order = date_order;
         this.start_time = start_time;
         this.location = location;
         this.total_price = total_price;
-        this.user = user;
     }
 
 
@@ -38,30 +36,30 @@ public class Order {
         return this;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public Order setUser_id(int user_id) {
-        this.user_id = user_id;
+    public Order setUser(User user) {
+        this.user = user;
         return this;
     }
 
-    public int getThematic_id() {
-        return thematic_id;
+    public Thematic getThematic() {
+        return thematic;
     }
 
-    public Order setThematic_id(int thematic_id) {
-        this.thematic_id = thematic_id;
+    public Order setThematic(Thematic thematic) {
+        this.thematic = thematic;
         return this;
     }
 
-    public int getPackage_id() {
-        return package_id;
+    public Package getaPackage() {
+        return aPackage;
     }
 
-    public Order setPackage_id(int package_id) {
-        this.package_id = package_id;
+    public Order setaPackage(Package aPackage) {
+        this.aPackage = aPackage;
         return this;
     }
 
@@ -98,15 +96,6 @@ public class Order {
 
     public Order setTotal_price(float total_price) {
         this.total_price = total_price;
-        return this;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Order setUser(User user) {
-        this.user = user;
         return this;
     }
 }
