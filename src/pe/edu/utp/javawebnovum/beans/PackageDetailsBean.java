@@ -1,7 +1,7 @@
 package pe.edu.utp.javawebnovum.beans;
 
-import pe.edu.utp.javawebnovum.models.HrService;
-import pe.edu.utp.javawebnovum.models.PackageDetail;
+import pe.edu.utp.javawebnovum.models.*;
+import pe.edu.utp.javawebnovum.models.Package;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -12,45 +12,43 @@ import java.util.List;
 @SessionScoped
 public class PackageDetailsBean implements Serializable {
     private HrService service;
-    private PackageDetail packagedetail;
+    private PackageDetail packageDetail;
 
 
     public PackageDetailsBean(){
         service = new HrService();
     }
 
-    public List<PackageDetail> getPackageDetail(){ return service.findAllUsers();    }
+    public List<PackageDetail> getPackageDetails(){ return service.findAllPackageDetails();    }
 
     public PackageDetail getPackagDetail() {
-        return packagedetail;
+        return packageDetail;
     }
 
-    public void getPackagDetail(PackageDetail packagedetail) {
-        this.packagedetail = packagedetail;
+    public void setPackagDetail(PackageDetail packagDetail) {
+        this.packageDetail = packagDetail;
     }
 
-    public int getPackage_id() {
-        return this.getPackagDetail().getPackage_id();
+    public int getaPackage() { return this.getPackagDetail().getaPackage().getId(); }
+
+    public void setaPackage(Package packageDetail){
+        this.getPackagDetail().setaPackage(packageDetail);
     }
 
-    public void setPackage_id(int package_id){
-        this.getPackagDetail().setPackage_id(package_id);
+    public int getThematic() {
+        return this.getPackagDetail().getThematic().getId()
     }
 
-    public int getThematic_id() {
-        return this.getPackagDetail().getThematic_id();
+    public void setThematic(Thematic thematic){
+        this.getPackagDetail().setThematic(thematic);
     }
 
-    public void setThematic_id(int thematic_id){
-        this.getPackagDetail().setThematic_id(thematic_id);
+    public int getUser() {
+        return this.getPackagDetail().getUser().getId();
     }
 
-    public int getUser_id() {
-        return this.getPackagDetail().getUser_id();
-    }
-
-    public void setUser_id(int user_id){
-        this.getPackagDetail().setUser_id(user_id);
+    public void setUser(User user){
+        this.getPackagDetail().setUser(user);
     }
 
     public float getTotal_price () {
@@ -68,64 +66,28 @@ public class PackageDetailsBean implements Serializable {
     public void setDescription(String description){
         this.getPackagDetail().setDescription(description);
     }
-    
-    public String getName() { return this.getUser().getName(); }
 
-    public void setName(String name){
-        this.getUser().setName(name);
-    }
-
-    public String getLast_Name() { return this.getUser().getLast_name(); }
-
-    public void setLast_Name(String last_name){
-        this.getUser().setLast_name(last_name);
-    }
-
-    public String getAddress() { return this.getUser().getAddress(); }
-
-    public void setAddress(String address){
-        this.getUser().setAddress(address);
-    }
-
-    public String getDni() { return this.getUser().getDni(); }
-
-    public void setDni(String dni){
-        this.getUser().setDni(dni);
-    }
-
-    public String getRol() { return this.getUser().getRol(); }
-
-    public void setRol(String rol){
-        this.getUser().setRol(rol);
-    }
-
-    public String getEmail() { return this.getUser().getEmail(); }
-
-    public void setEmail(String email){
-        this.getUser().setEmail(email);
-    }
-
-    public String newUser(){
-        this.setUser(new User());
+    public String newPackageDetail(){
+        this.setPackagDetail(new PackageDetail());
         return "success";
     }
 
-    public String createUser(){
-        service.createUser(this.getPassword(),this.getName(),this.getLast_Name(),getAddress(), getDni(), getRol(),getEmail());
+    public String createPackageDetail(){
+        service.createPackageDetail(this.getPassword(),this.getName(),this.getLast_Name(),getAddress(), getDni(), getRol(),getEmail());
         return "success";
     }
 
-    public String editUser(User region){
-        this.setUser(user);
+    public String editPackageDetail(PackageDetail packageDetail){
+        this.setPackagDetail(packageDetail);
         return "success";
     }
 
-    public String updateUser(){
-        //service.updateUser(this.getUser());
+    public String updatePackageDetail(){
+        service.updatePackageDetail(this.getPackagDetail());
         return "success";
     }
-    public String deleteUser(User user){
-        //service.deleteUser(user.getId());
+    public String deletePackageDetail(PackageDetail packageDetail){
+        service.deleteUser(packageDetail.getaPackage().getId());
         return "success";
     }
 }

@@ -15,6 +15,10 @@ public class PackageDetail {
         this.description = description;
     }
 
+    public PackageDetail() {
+
+    }
+
     public Package getaPackage() {
         return aPackage;
     }
